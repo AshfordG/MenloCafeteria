@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>My Website</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/styles/home.css">
+	<!-- Custom CSS -->
+</head>
+
+<body>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-custom">
+		<span class="orange-text">Menlo </span> <span class="salmon-text"> Cafeteria</span>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link txt-color" href="/login">Signout <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link txt-color active" href="/home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link txt-color2" href="#">Admin</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Main Content -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 left-section">
+				<!-- Left Column -->
+				<div class="padding">
+					<div class="stopwatch-container">
+						<div class="stopwatch">00:00:00</div>
+						<div>
+							<button class="start-btn" type="submit">Start</button>
+							<button class="stop-btn" type="submit">Stop</button>
+							<button class="reset-btn" type="submit">Reset</button>
+						</div>
+
+					</div>
+				</div>
+				<!-- Box to Create New food items -->
+				<div class="admin-container">
+					<div class="col-md-8 submit-box">
+						<h2 class="subtitle">Add a new food item here</h2>
+						<div class="format">
+							<form method="post" class="form-format">
+								<input type="create" id="create" name="create" placeholder="Name of Food">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</form>
+						</div>
+						{% with messages = get_flashed_messages() %}
+						{% if messages %}
+						{% for msg in messages %}
+						<p class="error-msg">{{msg}}</p>
+						{% endfor %}
+						{% endif %}
+						{% endwith %}
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 right-section">
+				<!-- Right Column -->
+				<div class="list-box">
+					<h2>Most Popular Items</h2>
+					<hr>
+					<ul class="list">
+						{% for food in results %}
+						<li>{{food}}</li>
+						<br>
+						{%endfor %}
+					</ul>
+					<!-- <form method="post"> -->
+					<button class="reset" type="submit">Reset Votes</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="/static/scripts/timer.js"></script>
+</body>
+
+</html>
